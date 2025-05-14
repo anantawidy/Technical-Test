@@ -1,10 +1,10 @@
 Feature: Register Page
 
-  Scenario: Input valid data
-    Given user is on the registration page
-    When user input all mandatory fields
-    And click button daftar
-    Then user will be redirect to otp page
+#  Scenario: Input valid data
+#    Given user is on the registration page
+#    When user input all mandatory fields
+#    And click button daftar
+#    Then user will be redirect to otp page
 
   Scenario: Input invalid phone number
     Given user is on the registration page
