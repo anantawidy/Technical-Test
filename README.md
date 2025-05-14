@@ -30,4 +30,4 @@ Repository ini berisi sebuah **Technical Test Automation**. Framework ini dibang
 ---
 
 ## **Catatan**
-- Pada test case pertama (**Input valid data**), bagian ini dikomentari karena alur tidak dapat dilanjutkan. Penyebabnya adalah munculnya **CAPTCHA** saat mencoba melakukan registrasi.
+- Pada test case pertama (**Input valid data**), bagian ini tidak dijalankan karena alur tidak dapat dilanjutkan. Penyebabnya adalah munculnya **CAPTCHA** saat mencoba melakukan registrasi.
