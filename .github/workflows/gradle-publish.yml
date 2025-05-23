@@ -1,21 +1,22 @@
+# Nama workflow nya
 name: Automation Workflow
 
-on:
-  push:
+on: # Menentukan kapan workflow akan dijalankan
+  push: # Ketika ada yang push code ke main
     branches: [ "main" ]
-  pull_request:
+  pull_request: # Ketika ada yang PR ke main
     branches: [ "main" ]
-  workflow_dispatch:
+  workflow_dispatch: # Memungkinkan untuk running manual
 
 jobs:
-  run-automation-test:
-    runs-on: windows-latest
+  run-automation-test: # Mendefinisikan nama suatu job
+    runs-on: windows-latest # Menentukan runner environment
     permissions: 
-      contents: write
+      contents: write # Memberikan izin untuk menulis konten ke repository, diperlukan untuk deploy ke GitHub Pages.
 
     steps:
-    # Download repo
-    - uses: actions/checkout@v4
+    # Menyalin kode dari repo GitHub ke runner (seperti git clone otomatis).
+    - uses: actions/checkout@v4 
     
     # Setup Java
     - name: Set up JDK 17
@@ -28,15 +29,15 @@ jobs:
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.7.2
 
-    # Setup gradlew
+    # Set permission untuk gradlew
     - name: Setup gradlew
       run: chmod +x gradlew
 
-    # Execute gradle command for running cucumber test
+    # Execute gradle command untuk running cucumber test
     - name: Execute Test
       run: ./gradlew cucumber
 
-    # Archive test result
+    # Upload test result
     - name: Archive test result
       uses: actions/upload-artifact@v4.4.3
       if: always()
@@ -44,9 +45,9 @@ jobs:
         name: Cucumber Report
         path: reports
 
-    # Deploy to GitHub page
+    # Deploy report ke GitHub page
     - name: Deploy report to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4.0.0
       with: 
-        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.GITHUB_TOKEN }} # token bawaan dari GitHub Actions untuk autentikasi otomatis.
         publish_dir: reports
