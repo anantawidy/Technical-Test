@@ -80,5 +80,6 @@ public class registerStep {
 
     @Then("redirect to kebijakan privasi page")
     public void redirectToKebijakanPrivasiPage() {
+        RegisterPages.redirectToKebijakanPrivasiPage();
     }
 }
